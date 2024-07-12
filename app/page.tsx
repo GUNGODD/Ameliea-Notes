@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import Header from "./header";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import { isGeneratorFunction } from "util/types";
+import DocumentCard from "./document-card";
 
 export default function Home() {
   {
@@ -29,9 +31,7 @@ export default function Home() {
         >
           Click Me
         </Button>
-        {documents?.map((doc) => {
-          return <div key={doc._id}>{doc.title}</div>;
-        })}
+        {documents?.map((doc) => <DocumentCard document={doc} />)}
       </main>
     </>
   );
