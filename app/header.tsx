@@ -18,8 +18,14 @@ export default function Header() {
     <div className="bg-slate-900 py-4 ">
       <div className="container mx-auto flex justify-between items-center ">
         <div className="flex items-center gap-4">
-          <Image src="/logo.svg" width={40} height={40} alt="Ameleia Logo " />
-          AMELIEA
+          <Image
+            src="/logo.svg"
+            width={40}
+            height={40}
+            alt="Ameleia Logo "
+            className="rounded"
+          />
+          <span className="text-3xl"> AMELIEA</span>
         </div>
 
         <div>
