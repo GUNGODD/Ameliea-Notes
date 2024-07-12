@@ -3,7 +3,7 @@
 
 import { useQuery } from "convex/react";
 import { mutation, query } from "./_generated/server";
-import { v } from "convex/values";
+import { ConvexError, v } from "convex/values";
 
 // define the args for backend  to store the data
 // eg . name , title , content , author
@@ -22,6 +22,14 @@ export const creteDocument = mutation({
   },
 
   async handler(ctx, args) {
+    //
+    // ------check if  the user is authenticated or not
+    const userId = (await ctx.auth.getUserIdentity())?.tokenIdentifier;
+
+    if (!userId) {
+      throw new ConvexError("Not Authenticated ");
+    }
+
     await ctx.db.insert("documents", {
       // inside the doc-> what we gonna store
       // now it explain that we have table called documents and then properteis inside it
