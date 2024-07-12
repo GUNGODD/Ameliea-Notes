@@ -19,9 +19,7 @@ export default function HeaderActions() {
       </Unauthenticated>
 
       <Authenticated>
-        <div className="flex gap-4">
-          <UserButton />
-        </div>
+        <UserButton />
       </Authenticated>
       {/*TODO: change the loading text with svg icon */}
       <AuthLoading>Loading....</AuthLoading>
