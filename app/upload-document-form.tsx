@@ -17,6 +17,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import { Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   title: z.string().min(1).max(250),
@@ -58,7 +59,10 @@ export default function UploadDocumentForm({
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button disabled={form.formState.isSubmitting} type="submit">
+          {form.formState.isSubmitting && <Loader2 className="anoimate-spin" />}
+          Submit
+        </Button>
       </form>
     </Form>
   );
