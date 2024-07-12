@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Loader2 } from "lucide-react";
+import { title } from "process";
 
 const formSchema = z.object({
   title: z.string().min(1).max(250),
@@ -28,6 +29,8 @@ export default function UploadDocumentForm({
 }: {
   onUpload: () => void;
 }) {
+  // sleep 2 seconds
+
   const createDocument = useMutation(api.documents.creteDocument);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -39,6 +42,7 @@ export default function UploadDocumentForm({
   // on submit handler
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     await createDocument(values);
     onUpload();
   }
@@ -59,8 +63,12 @@ export default function UploadDocumentForm({
             </FormItem>
           )}
         />
-        <Button disabled={form.formState.isSubmitting} type="submit">
-          {form.formState.isSubmitting && <Loader2 className="anoimate-spin" />}
+        <Button
+          className="flex gap-2 items-center "
+          disabled={form.formState.isSubmitting}
+          type="submit"
+        >
+          {form.formState.isSubmitting && <Loader2 className="animate-spin" />}
           Submit
         </Button>
       </form>
