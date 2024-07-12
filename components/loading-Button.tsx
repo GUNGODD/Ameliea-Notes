@@ -4,9 +4,11 @@ import { Loader2 } from "lucide-react";
 export function LoadingButton({
   isLoading,
   children,
+  loadingText,
 }: {
   isLoading: boolean;
   children: React.ReactNode;
+  loadingText: string;
 }) {
   return (
     <Button
@@ -15,8 +17,7 @@ export function LoadingButton({
       type="submit"
     >
       {isLoading && <Loader2 className="animate-spin" />}
-      {isLoading ? "Uploading" : "Uploaded"}
-      Submit
+      {isLoading ? loadingText : children}
     </Button>
   );
 }

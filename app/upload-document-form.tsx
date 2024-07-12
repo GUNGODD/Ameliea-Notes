@@ -23,6 +23,7 @@ import { LoadingButton } from "@/components/loading-Button";
 
 const formSchema = z.object({
   title: z.string().min(1).max(250),
+  file: z.instanceof(File),
 });
 // zod parsing lib for form validation and zod schema for validation schema
 export default function UploadDocumentForm({
@@ -64,6 +65,28 @@ export default function UploadDocumentForm({
             </FormItem>
           )}
         />
+
+        <FormField
+          control={form.control}
+          name="file"
+          render={({ field: { value, onChange, ...fieldProps } }) => (
+            <FormItem>
+              <FormLabel>File </FormLabel>
+              <FormControl>
+                <Input
+                  {...fieldProps}
+                  type="file"
+                  onChange={(event) => {
+                    const file = event.target.files?.[0];
+                    onChange(file);
+                  }}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <LoadingButton
           isLoading={form.formState.isSubmitting}
           loadingText="Uploading...."
