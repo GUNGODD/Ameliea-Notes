@@ -24,13 +24,7 @@ export default function CreateDocumentButton() {
       <AlertDialog>
         <AlertDialogTrigger asChild>
           {/*TODO:  AS CHILD */}
-          <Button
-            onClick={() => {
-              createDocument({ title: "hello Convex" });
-            }}
-          >
-            Upload Documents
-          </Button>
+          <Button>Upload Documents</Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
@@ -39,9 +33,8 @@ export default function CreateDocumentButton() {
               Upload Your Document to Ameliea
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter>
-            <UploadDocumentForm />
-          </AlertDialogFooter>
+
+          <UploadDocumentForm />
         </AlertDialogContent>
       </AlertDialog>
     </>

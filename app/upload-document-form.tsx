@@ -39,6 +39,7 @@ export default function UploadDocumentForm() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
+          name="title"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Title </FormLabel>
