@@ -16,7 +16,7 @@ export default function Home() {
     /*TODO: getDocument-> it is used to create a table inside   convex db an then insert data to  following attributes eg title  name , etc etc */
   }
 
-  const document = useQuery(api.documents.getDocuments);
+  const documents = useQuery(api.documents.getDocuments);
   const createDocument = useMutation(api.documents.creteDocument);
   return (
     <>
@@ -29,8 +29,8 @@ export default function Home() {
         >
           Click Me
         </Button>
-        {document?.map((doc) => {
-          <div key={doc._id}>{doc.title}</div>;
+        {documents?.map((doc) => {
+          return <div key={doc._id}>{doc.title}</div>;
         })}
       </main>
     </>
