@@ -22,7 +22,7 @@ export default function Home() {
   const createDocument = useMutation(api.documents.creteDocument);
   return (
     <>
-      <main className="flex min-h-screen flex-col items-center justify-between ">
+      <main className="p-24 ">
         <Button
           size={"sm"}
           onClick={() => {
@@ -31,7 +31,10 @@ export default function Home() {
         >
           Click Me
         </Button>
-        {documents?.map((doc) => <DocumentCard document={doc} />)}
+
+        <div className="grid grid-cols-4 ">
+          {documents?.map((doc) => <DocumentCard document={doc} />)}
+        </div>
       </main>
     </>
   );
