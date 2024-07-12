@@ -2,10 +2,25 @@
 
 import { api } from "@/convex/_generated/api";
 import { SignInButton, UserButton } from "@clerk/nextjs";
-import { Authenticated, Unauthenticated, useMutation } from "convex/react";
+import {
+  Authenticated,
+  Unauthenticated,
+  useMutation,
+  useQuery,
+} from "convex/react";
 
 export default function Home() {
-  // what is createDocument used for ?
+  {
+    //  to put some data to convex db
+    /*TODO: createDocument-> it is used to create a table inside   convex db an then insert data to  following attributes eg title  name , etc etc */
+  }
+
+  {
+    //  to get some data to convex db
+    /*TODO: getDocument-> it is used to create a table inside   convex db an then insert data to  following attributes eg title  name , etc etc */
+  }
+
+  const documents = useQuery(api.documents.getDocuments);
   const createDocument = useMutation(api.documents.creteDocument);
 
   return (
