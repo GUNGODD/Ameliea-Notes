@@ -15,12 +15,19 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 const formSchema = z.object({
   title: z.string().min(1).max(250),
 });
 // zod parsing lib for form validation and zod schema for validation schema
-export default function UploadDocumentForm() {
+export default function UploadDocumentForm({
+  onUpload,
+}: {
+  onUpload: () => void;
+}) {
+  const createDocument = useMutation(api.documents.creteDocument);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -30,8 +37,9 @@ export default function UploadDocumentForm() {
 
   // on submit handler
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    await createDocument(values);
+    onUpload();
   }
 
   return (

@@ -16,12 +16,17 @@ import { Button } from "@/components/ui/button";
 import { api } from "@/convex/_generated/api";
 import { useMutation, useQuery } from "convex/react";
 import UploadDocumentForm from "./upload-document-form";
+import { useState } from "react";
 export default function CreateDocumentButton() {
   const documents = useQuery(api.documents.getDocuments);
   const createDocument = useMutation(api.documents.creteDocument);
+
+  // state for closing the dialog when the user clicks outside of it
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
-      <AlertDialog>
+      <AlertDialog onOpenChange={setIsOpen} open={isOpen}>
         <AlertDialogTrigger asChild>
           {/*TODO:  AS CHILD */}
           <Button>Upload Documents</Button>
@@ -34,7 +39,7 @@ export default function CreateDocumentButton() {
             </AlertDialogDescription>
           </AlertDialogHeader>
 
-          <UploadDocumentForm />
+          <UploadDocumentForm onUpload={() => setIsOpen(false)} />
         </AlertDialogContent>
       </AlertDialog>
     </>
