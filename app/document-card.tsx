@@ -28,7 +28,7 @@ export default function DocumentCard({
         <p>Card Content</p>
       </CardContent>
       <CardFooter>
-        <Button> View</Button>
+        <Button variant="secondary"> View</Button>
       </CardFooter>
     </Card>
   );
