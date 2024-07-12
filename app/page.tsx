@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { ModeToggle } from "@/components/ui/Mode-toggle";
 import { api } from "@/convex/_generated/api";
 import { SignInButton, UserButton } from "@clerk/nextjs";
 import {
@@ -25,7 +26,7 @@ export default function Home() {
   const createDocument = useMutation(api.documents.creteDocument);
 
   return (
-    <div>
+    <main>
       <h1> hello world </h1>
 
       <Unauthenticated>
@@ -34,6 +35,9 @@ export default function Home() {
 
       <Authenticated>
         <UserButton />
+
+        <ModeToggle />
+
         <Button
           onClick={() => {
             createDocument({ title: "hello Convex  i am aditya" });
@@ -46,6 +50,6 @@ export default function Home() {
           return <div key={doc._id}> {doc.title}</div>;
         })}
       </Authenticated>
-    </div>
+    </main>
   );
 }

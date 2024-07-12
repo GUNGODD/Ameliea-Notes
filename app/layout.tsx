@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
 import Providers from "./providers";
-
+import { ThemeProvider } from "@/components/ui/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 const fontSans = FontSans({
