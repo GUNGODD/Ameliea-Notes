@@ -19,6 +19,7 @@ import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Loader2 } from "lucide-react";
 import { title } from "process";
+import { LoadingButton } from "@/components/loading-Button";
 
 const formSchema = z.object({
   title: z.string().min(1).max(250),
@@ -63,14 +64,12 @@ export default function UploadDocumentForm({
             </FormItem>
           )}
         />
-        <Button
-          className="flex gap-2 items-center "
-          disabled={form.formState.isSubmitting}
-          type="submit"
+        <LoadingButton
+          isLoading={form.formState.isSubmitting}
+          loadingText="Uploading...."
         >
-          {form.formState.isSubmitting && <Loader2 className="animate-spin" />}
-          Submit
-        </Button>
+          Upload
+        </LoadingButton>
       </form>
     </Form>
   );
