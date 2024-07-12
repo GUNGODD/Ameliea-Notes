@@ -1,9 +1,13 @@
 "use client";
 
+import { api } from "@/convex/_generated/api";
 import { SignInButton, UserButton } from "@clerk/nextjs";
-import { Authenticated, Unauthenticated } from "convex/react";
+import { Authenticated, Unauthenticated, useMutation } from "convex/react";
 
 export default function Home() {
+  // what is createDocument used for ?
+  const createDocument = useMutation(api.documents.creteDocument);
+
   return (
     <div>
       <h1> hello world </h1>
@@ -13,7 +17,14 @@ export default function Home() {
       </Unauthenticated>
 
       <Authenticated>
-        <UserButton></UserButton>
+        <UserButton />
+        <button
+          onClick={() => {
+            createDocument({ title: "hello Convex  i am aditya" });
+          }}
+        >
+          Click me{" "}
+        </button>
       </Authenticated>
     </div>
   );
