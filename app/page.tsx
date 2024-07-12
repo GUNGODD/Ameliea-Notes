@@ -22,17 +22,19 @@ export default function Home() {
   const createDocument = useMutation(api.documents.creteDocument);
   return (
     <>
-      <main className="p-24 ">
-        <Button
-          size={"sm"}
-          onClick={() => {
-            createDocument({ title: "hello Convex" });
-          }}
-        >
-          Click Me
-        </Button>
-
-        <div className="grid grid-cols-4 ">
+      <main className="p-24  spaace-y-8">
+        <div className="flex justify-between items-center">
+          <h1 className="tex-4xl font-bold "> My Documents </h1>
+          <Button
+            size={"sm"}
+            onClick={() => {
+              createDocument({ title: "hello Convex" });
+            }}
+          >
+            Upload Documents
+          </Button>
+        </div>
+        <div className="grid grid-cols-4 gap-8 ">
           {documents?.map((doc) => <DocumentCard document={doc} />)}
         </div>
       </main>
