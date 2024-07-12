@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { api } from "@/convex/_generated/api";
 import { SignInButton, UserButton } from "@clerk/nextjs";
 import {
@@ -33,13 +34,13 @@ export default function Home() {
 
       <Authenticated>
         <UserButton />
-        <button
+        <Button
           onClick={() => {
             createDocument({ title: "hello Convex  i am aditya" });
           }}
         >
           Click me{" "}
-        </button>
+        </Button>
 
         {documents?.map((doc) => {
           return <div key={doc._id}> {doc.title}</div>;
