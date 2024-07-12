@@ -40,6 +40,10 @@ export default function Home() {
         >
           Click me{" "}
         </button>
+
+        {documents?.map((doc) => {
+          return <div key={doc._id}> {doc.title}</div>;
+        })}
       </Authenticated>
     </div>
   );
